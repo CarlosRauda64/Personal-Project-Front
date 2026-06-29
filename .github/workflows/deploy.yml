@@ -23,7 +23,7 @@ jobs:
 
       - name: Download image and deploy
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_IMAGE: ${{ vars.DOCKER_IMAGE }}
           IMAGE_TAG: ${{ vars.IMAGE_TAG }}
         run: |
