@@ -1,0 +1,20 @@
+name: Node.js CI
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6.0.9
+        with:
+          version: 11.9.0
+      - name: Install Dependencies with pnpm
+        run: pnpm ci
+      - name: Build Project.
+        run: pnpm run build
