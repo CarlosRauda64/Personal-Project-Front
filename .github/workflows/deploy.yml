@@ -4,6 +4,8 @@ on:
     workflows: ["Build project NodeJS"]
     types:
       - completed
+    branches:
+      - main
 
 jobs:
   docker:
