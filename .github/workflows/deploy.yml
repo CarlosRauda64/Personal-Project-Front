@@ -1,7 +1,7 @@
 name: Build and push Docker images
 on:
   workflow_run:
-    workflows: ["build"]
+    workflows: ["Build project NodeJS"]
     types:
       - completed
 
