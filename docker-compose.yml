@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  frontend-dev:
+    # Reemplaza con tu usuario y el nombre de tu repo
+    image: ghcr.io/TU_USUARIO/TU_REPO_FRONTEND:dev 
+    container_name: react_frontend_dev
+    restart: always
+    ports:
+      # Expone el puerto 80 interno de Nginx hacia el 3000 de tu laptop
+      - "3000:80"
