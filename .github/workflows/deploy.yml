@@ -24,8 +24,8 @@ jobs:
       - name: Download image and deploy
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_IMAGE: ${{ env.DOCKER_IMAGE }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          DOCKER_IMAGE: ${{ vars.DOCKER_IMAGE }}
+          IMAGE_TAG: ${{ vars.IMAGE_TAG }}
         run: |
           docker compose pull
           docker compose up d --remove-oprhans
