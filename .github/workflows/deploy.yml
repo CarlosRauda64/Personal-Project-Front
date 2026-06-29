@@ -27,5 +27,5 @@ jobs:
           DOCKER_IMAGE: ${{ env.DOCKER_IMAGE }}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
         run: |
-          docker-compose pull
-          docker-compose up d --remove-oprhans
+          docker compose pull
+          docker compose up d --remove-oprhans
