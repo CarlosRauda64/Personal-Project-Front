@@ -28,4 +28,4 @@ jobs:
           IMAGE_TAG: ${{ vars.IMAGE_TAG }}
         run: |
           docker compose pull
-          docker compose up d --remove-oprhans
+          docker compose up -d --remove-orphans
