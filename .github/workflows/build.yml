@@ -3,12 +3,33 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      security-events: write
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: 'fs'
+          format: 'json'
+          output: 'result.json'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '1'
+
+      - name: Upload Trivy scan results
+        uses: actions/upload-artifact@v4
+        if: always() # Asegura que se suba incluso si Trivy encuentra vulnerabilidades y falla el paso anterior
+        with:
+          name: trivy-results
+          path: 'result.json'
 
       - name: Use Node.js
         uses: actions/setup-node@v4
