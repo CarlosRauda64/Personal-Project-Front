@@ -1,9 +1,20 @@
-version: '3.8'
 services:
   frontend-dev:
     # Reemplaza con tu usuario y el nombre de tu repo
-    image: ${DOCKER_USERNAME}/${DOCKER_IMAGE}:${IMAGE_TAG:-latest}
+    image: ${DOCKER_USERNAME}/${DOCKER_IMAGE}:${IMAGE_TAG_DEV:-dev}
     container_name: react_frontend_dev
+    profiles:
+      - "dev"
     restart: always
+    ports:
+      - "3001:80"
+    
+  frontend-prod:
+    # Reemplaza con tu usuario y el nombre de tu repo
+    image: ${DOCKER_USERNAME}/${DOCKER_IMAGE}:${IMAGE_TAG_PROD:-latest}
+    container_name: react_frontend_prod
+    restart: always
+    profiles:
+      - "prod"
     ports:
       - "3000:80"
