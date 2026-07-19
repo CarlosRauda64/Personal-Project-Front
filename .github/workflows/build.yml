@@ -1,10 +1,7 @@
 name: Build project NodeJS
-on: 
-  push:
-    branches:
-      - main
-      - develop
-  workflow_dispatch:
+# Workflow reutilizable: lo invoca el orquestador (cicd.yml)
+on:
+  workflow_call:
 
 jobs:
   build:
